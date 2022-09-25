@@ -1,0 +1,109 @@
+<style>
+label{
+  text-transform: capitalize;
+}
+</style>
+<!-- <h2>Products</h2>
+
+<div *ngFor="let product of datas.units">
+
+  <h3>
+      {{ product }}
+  </h3>
+
+</div> -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 bg-dark bg-gradient p-5">
+      <form #dataForms="ngForm">
+        <h1 class="text-white text-center text-wrap text-uppercase fw-bold mb-4">perimeters and areas calculator</h1>
+        <!-- {{dataForms.value | json}} -->
+        <div class="input-group mb-3">
+          <label for="need" class="input-group-text">select the calcul: </label>
+          <select name="figurecal" ngModel id="need" class="form-select" (change)="result=0; dataconverted=0">
+            <option value="" selected>choose a calcul</option>
+            <option>perimeter</option>
+            <option>area</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <label for="figure" class="input-group-text">select the geometrique figure: </label>
+          <select name="figureName" ngModel  id="figure" class="form-select" (change)="result=0; dataconverted=0">
+            <option value="" selected>choose a figure</option>
+            <option  *ngFor="let figure of datas.figures">{{figure.name}}</option>
+          </select>
+        </div>
+        <div>
+          <div *ngFor="let figure of datas.figures">
+            <div *ngIf="figure.name == dataForms.value.figureName">
+              <div *ngIf="dataForms.value.figureName != 'triangle'">
+                <div *ngFor="let dimension of figure.dimensions" class="mb-3">
+                  <label for="{{dimension.name}}" class="form-label mb-2 text-white fs-3">{{dimension.name}}: </label><br>
+                  <input type="number" id="{{dimension.name}}" name="{{dimension.name}}" ngModel class="form-control">
+                </div>
+              </div>
+              <div *ngIf="dataForms.value.figureName == 'triangle'" class="mb-3">
+                <div *ngIf="dataForms.value.figurecal == 'perimeter'">
+                  <div *ngFor="let dimension of figure.dimensionsPerimeter">
+                    <label for="{{dimension.name}}" class="form-label mb-2 text-white fs-3">{{dimension.name}}: </label><br>
+                    <input type="number" id="{{dimension.name}}" name="{{dimension.name}}" ngModel class="form-control">
+                  </div>
+                </div>
+                <div *ngIf="dataForms.value.figurecal == 'area'">
+                  <div *ngFor="let dimension of figure.dimensionsArea">
+                    <label for="{{dimension.name}}" class="form-label mb-2 text-white fs-3">{{dimension.name}}: </label><br>
+                    <input type="number" id="{{dimension.name}}" name="{{dimension.name}}" ngModel class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <!--display if we are calculationg the perimeter-->
+          <div *ngIf="dataForms.value.figurecal=='perimeter'" class="input-group mb-3 result">
+            <label for="result" class="input-group-text">{{dataForms.value.figurecal}}: </label>
+            <input type="number" readonly name="result" value="{{result}}" id="result" class="form-control">
+            <span class="input-group-text"> m</span>
+          </div>
+          <!-- end of displaying if we are calculationg the perimeter-->
+          <!--display if we are calculationg the area-->
+          <div *ngIf="dataForms.value.figurecal=='area'" class="input-group mb-3 result">
+            <label for="result" class="input-group-text">{{dataForms.value.figurecal}}=</label>
+            <input type="number" readonly name="result" value="{{result}}" id="result" class="form-control">
+            <span class="input-group-text">m²</span>
+          </div>
+          <!-- end of display if we are calculationg the area-->
+
+          <!--display convertion field for perimeter-->
+          <div *ngIf="dataForms.value.figurecal=='perimeter'" class="input-group mb-3 convert">
+            <label for="convertion" class="input-group-text">convertion</label>
+            <input type="text" id="convertion" readonly name="dataconverted" value="{{dataconverted}}" class="form-control">
+            <!-- <label for="convertion-unit"></label> -->
+            <select name="convertunit" title="convert" ngModel id="convertion-unit" class="form-select">
+              <option value="" selected> choose an unit</option>
+              <option *ngFor="let unit of datas.units">{{unit}}</option>
+            </select>
+          </div>
+          <!-- end of displaying convertion field for perimeter-->
+          <!--display convertion field for area-->
+          <div *ngIf="dataForms.value.figurecal=='area'" class="input-group mb-3 convert">
+            <label for="convertion" class="input-group-text">convertion</label>
+            <input type="text" class="form-control" id="convertion" readonly name="dataconverted" value="{{dataconverted}}">
+            <!-- <label for="convertion-unit"></label> -->
+            <select name="convertunit" title="convert" ngModel id="convertion-unit" class="form-select">
+              <option value="" selected> choose an unit</option>
+              <option *ngFor="let unit of datas.squareUnits">{{unit}}</option>
+            </select>
+          </div>
+          <!--en of displaying convertion field for area-->
+        </div>
+        <div>
+          <button type="button" class="btn btn-success btn-lg me-5 ms-3" (click)="calcul(dataForms)" >calcul of {{dataForms.value.figurecal}}</button>
+          <button type="button" class="btn btn-warning btn-lg ms-3"(click)="convert(dataForms.value.convertunit)"> convert to {{dataForms.value.convertunit}}</button>
+        </div>
+      </form>
+  </div>
+  </div>
+
+</div>
