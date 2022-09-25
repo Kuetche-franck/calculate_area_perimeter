@@ -1,0 +1,18 @@
+{
+    "figure1": {
+        "name": "rectangle",
+        "dimensions":["longueur", "largeur"]
+    },
+    "figure2": {
+        "name": "circle",
+        "dimensions":["radius"]
+    },
+    "figure3": {
+        "name": "square",
+        "dimensions":["side"]
+    },
+    "figure4": {
+        "name": "triangle",
+        "dimensions":["side1", "side2", "side3"]
+    }
+}

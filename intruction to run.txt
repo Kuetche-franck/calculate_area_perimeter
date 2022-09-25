@@ -1,0 +1,15 @@
+follow the steps below to execute the app
+
+1- open two terminals
+
+2- in the first move to the folder "calcule_nodejs" which is the folder of our api
+
+3- run the command "node server.js". server.js is the name of our node server
+
+4- in the second terminal, move to the folder "calcule_angular" which contain our angular app
+
+5- run the command "ng serve" which will start our angular app.
+
+6- type the addresse "http://localhost:4200" in your brouser an enjoy
+
+we're waiting for your feedback about how to ameliorate that program.

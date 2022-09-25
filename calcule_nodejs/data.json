@@ -1,0 +1,23 @@
+{
+    "units":[ "km", "m", "dm", "cm"],
+    "squareUnits":["km²","m²","dm²","cm²"],
+    "figures":[
+        {
+            "name": "rectangle",
+            "dimensions":[{"name":"longueur", "val":0}, {"name":"largeur", "val":0}]
+        },
+        {
+            "name": "circle",
+            "dimensions":[{"name":"radius", "radius":0}]
+        },
+        {
+            "name": "square",
+            "dimensions":[{"name":"side", "side":0}]
+        },
+        {
+            "name": "triangle",
+            "dimensionsArea":[{"name":"base", "base":0}, {"name":"height", "height":0}],
+            "dimensionsPerimeter": [ {"name":"side1", "side1":0}, {"name":"side2", "side2":0}, {"name":"side3", "side3":0}]
+        }
+    ]
+}
